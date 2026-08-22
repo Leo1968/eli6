@@ -1,6 +1,6 @@
 # ELI6 — Visual Explain Like I'm 6
 
-[English](#english-version) | [中文说明](#中文版)
+[English Version](#english-version) | [Chinese Version](#中文版)
 
 ---
 
