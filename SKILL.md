@@ -50,7 +50,16 @@ Activate when the user:
    - Keep the color palette clean and friendly (avoid dark mode unless requested)
    - Make every important idea visible without reading walls of text
 
-5. **Language rules**
+5. **Shared visual language**
+
+   - Use a calm, premium Apple-like visual language without copying Apple's interfaces: generous whitespace, soft gray backgrounds, restrained blue accents, gentle shadows, translucent surfaces, and consistent rounded corners.
+   - Keep the page content-first. Use one clear hierarchy, minimal decoration, and simple linear icons or SVG shapes.
+   - Support desktop, tablet, and mobile layouts with responsive spacing and stacking.
+   - Include natural, restrained hover, focus, active, and transition states. Respect `prefers-reduced-motion`.
+   - Use the exact lowercase button label `download` for the in-page HTML download control.
+   - Add a quiet footer reading `FoisonX Lab` to generated pages.
+
+6. **Language rules**
 
    - Short sentences
    - Concrete words over abstract ones
@@ -58,17 +67,17 @@ Activate when the user:
    - Never say "as you know" or assume prior knowledge
    - If a technical term must appear, immediately follow it with a plain definition
 
-6. **Special cases**
+7. **Special cases**
 
    - **Code / systems / modules**: Show the flow of data or control with a clear left-to-right or top-to-bottom diagram. Highlight the "main character" of the system.
    - **Technical trade-offs**: Frame as "We chose A instead of B because..." with simple pros/cons visuals.
    - **Incidents / postmortems**: Timeline style — what happened → why it broke → how it was fixed, with clear cause-effect arrows.
    - **Abstract concepts**: Always anchor to a physical or everyday analogy first.
 
-7. **Image generation**  
+8. **Image generation**
    When a custom illustration would significantly improve clarity (complex process, unique metaphor), generate a clean, simple, friendly illustration using the image generation capability and embed or reference it. Prefer lightweight SVG diagrams for most cases so the HTML stays fully self-contained.
 
-8. **File delivery**  
+9. **File delivery**
    Write the finished HTML to a file (e.g. `eli6-<short-topic>.html`) and present it to the user so they can open or download it.
    - After the HTML is successfully written and checked, always include a clickable Markdown link using the absolute file path, labeled clearly as “下载 HTML” or “打开 HTML”.
    - If a preview image or other requested companion file was created, provide a separate clickable link for it too.
