@@ -1,0 +1,27 @@
+{
+  "name": "eli6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/agents/index.js",
+  "types": "dist/src/agents/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --runInBand"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^26.2.0",
+    "dotenv": "^17.4.2",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.12",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "js-yaml": "^5.3.0"
+  }
+}
