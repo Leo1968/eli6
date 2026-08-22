@@ -101,6 +101,10 @@ The exporter uses a locally installed Chrome, Chromium, Microsoft Edge, or anoth
 CHROME_PATH=/path/to/chrome npm run export:pdf -- input.html output.pdf
 ```
 
+### 📱 Responsive HTML Template
+
+The project includes a self-contained responsive HTML starter template at `templates/eli6-responsive.html`. It includes a mobile viewport, flexible cards and flow diagrams, mobile breakpoints, print styles, and a built-in HTML download button. Copy it as the starting point for a new explanation page and replace the sample content.
+
 ### 💬 Basic Usage
 
 Import the public API and create an adapter from an LLM configuration:
