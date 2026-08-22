@@ -137,3 +137,7 @@ tests/              Adapter compatibility tests
 * Keep API keys in environment variables or another secure secret store. Do not commit them to the repository.
 * The current adapter API returns a complete `ChatResponse`; streaming responses require a separate streaming interface.
 * Provider-specific model names and credentials must follow each provider's API requirements.
+
+### 📄 License
+
+This project is licensed under the [MIT License](./LICENSE).
