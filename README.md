@@ -81,6 +81,26 @@ npm test
 
 The build output is written to `dist/`. TypeScript declaration files are generated alongside the compiled JavaScript files.
 
+### 📄 Export HTML to PDF
+
+Use the PDF export command to convert a self-contained HTML explanation into a PDF while preserving its layout, colors, and SVG diagrams:
+
+```bash
+npm run export:pdf -- input.html output.pdf
+```
+
+If the output path is omitted, the PDF is created next to the HTML file:
+
+```bash
+npm run export:pdf -- input.html
+```
+
+The exporter uses a locally installed Chrome, Chromium, Microsoft Edge, or another Chromium-based browser. If the browser is installed in a non-standard location, set `CHROME_PATH`:
+
+```bash
+CHROME_PATH=/path/to/chrome npm run export:pdf -- input.html output.pdf
+```
+
 ### 💬 Basic Usage
 
 Import the public API and create an adapter from an LLM configuration:
