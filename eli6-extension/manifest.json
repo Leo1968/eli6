@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "ELI6 - 视觉极简图解",
+  "name": "ELI6 Lens",
   "version": "1.0.0",
   "description": "一键将任何复杂概念或选中文本转化为自包含的极简可视化 HTML 解释页面",
   "icons": {
