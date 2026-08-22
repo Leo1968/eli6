@@ -29,6 +29,37 @@ const statusText = document.getElementById("statusText");
 const loadingOverlay = document.getElementById("loadingOverlay");
 const customInput = document.getElementById("customInput");
 const btnRun = document.getElementById("btnRun");
+const btnOpenPage = document.getElementById("btnOpenPage");
+const btnDownload = document.getElementById("btnDownload");
+let hasGeneratedContent = false;
+
+function setContentActionsEnabled(enabled) {
+  btnOpenPage.disabled = !enabled;
+  btnDownload.disabled = !enabled;
+}
+
+function getCurrentHtml() {
+  const frameDocument = renderFrame.contentDocument;
+  if (!frameDocument?.documentElement) return null;
+  return `<!DOCTYPE html>\n${frameDocument.documentElement.outerHTML}`;
+}
+
+function createContentBlobUrl() {
+  const html = getCurrentHtml();
+  if (!html) return null;
+  return URL.createObjectURL(new Blob([html], { type: "text/html" }));
+}
+
+function downloadCurrentHtml() {
+  const blobUrl = createContentBlobUrl();
+  if (!blobUrl) return;
+
+  const link = document.createElement("a");
+  link.href = blobUrl;
+  link.download = "eli6-explanation.html";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+}
 
 function wireDownloadButtons() {
   const frameDocument = renderFrame.contentDocument;
@@ -43,19 +74,24 @@ function wireDownloadButtons() {
       event.preventDefault();
       event.stopImmediatePropagation();
 
-      const html = `<!DOCTYPE html>\n${frameDocument.documentElement.outerHTML}`;
-      const blobUrl = URL.createObjectURL(new Blob([html], { type: "text/html" }));
-      const link = document.createElement("a");
-      link.href = blobUrl;
-      link.download = "eli6-explanation.html";
-      link.click();
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-      statusText.textContent = "已下载 eli6-explanation.html";
+      downloadCurrentHtml();
     }, true);
   });
 }
 
-renderFrame.addEventListener("load", wireDownloadButtons);
+renderFrame.addEventListener("load", () => {
+  wireDownloadButtons();
+  setContentActionsEnabled(hasGeneratedContent);
+});
+
+btnOpenPage.addEventListener("click", () => {
+  const blobUrl = createContentBlobUrl();
+  if (!blobUrl) return;
+  window.open(blobUrl, "_blank");
+  setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+});
+
+btnDownload.addEventListener("click", downloadCurrentHtml);
 
 async function generateELI6(promptText) {
   if (!promptText || !promptText.trim()) return;
@@ -73,6 +109,8 @@ async function generateELI6(promptText) {
 
   loadingOverlay.style.display = "flex";
   btnRun.disabled = true;
+  hasGeneratedContent = false;
+  setContentActionsEnabled(false);
   statusText.textContent = "AI 正在绘制图解中...";
 
   try {
@@ -106,9 +144,12 @@ async function generateELI6(promptText) {
     if (htmlContent.startsWith("```")) htmlContent = htmlContent.slice(3);
     if (htmlContent.endsWith("```")) htmlContent = htmlContent.slice(0, -3);
 
+    hasGeneratedContent = true;
     renderFrame.srcdoc = htmlContent.trim();
-    statusText.textContent = "生成完成！点击页面内 download 按钮可保存";
+    statusText.textContent = "生成完成";
   } catch (err) {
+    hasGeneratedContent = false;
+    setContentActionsEnabled(false);
     statusText.innerHTML = `<span style="color:#ef4444;">生成出错: ${err.message}</span>`;
   } finally {
     loadingOverlay.style.display = "none";
