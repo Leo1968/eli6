@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>ELI6 扩展设置</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8fafc;
+      padding: 40px 20px;
+      color: #0f172a;
+    }
+    .card {
+      max-width: 520px;
+      margin: 0 auto;
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    h2 { font-size: 20px; margin-bottom: 20px; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #475569; }
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .presets {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .preset-btn {
+      font-size: 11px;
+      padding: 4px 8px;
+      border: 1px solid #e2e8f0;
+      background: #f1f5f9;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button.btn-save {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .toast {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #16a34a;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>⚙️ ELI6 模型与 API 设置</h2>
+    
+    <div class="form-group">
+      <label>快速预设服务商</label>
+      <div class="presets">
+        <button class="preset-btn" type="button" data-url="https://api.openai.com/v1/chat/completions" data-model="gpt-4o">OpenAI (GPT-4o)</button>
+        <button class="preset-btn" type="button" data-url="https://api.deepseek.com/chat/completions" data-model="deepseek-chat">DeepSeek</button>
+        <button class="preset-btn" type="button" data-url="https://openrouter.ai/api/v1/chat/completions" data-model="anthropic/claude-3.5-sonnet">OpenRouter</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="apiEndpoint">API 接口地址 (OpenAI 兼容)</label>
+      <input type="text" id="apiEndpoint" placeholder="https://api.openai.com/v1/chat/completions" />
+    </div>
+
+    <div class="form-group">
+      <label for="apiKey">API Key</label>
+      <input type="password" id="apiKey" placeholder="sk-..." />
+    </div>
+
+    <div class="form-group">
+      <label for="modelName">模型名称 (Model)</label>
+      <input type="text" id="modelName" placeholder="gpt-4o / deepseek-chat / claude-3-5-sonnet" />
+    </div>
+
+    <button class="btn-save" id="saveBtn">保存配置</button>
+    <div class="toast" id="toast">✅ 配置已成功保存！</div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
