@@ -31,10 +31,7 @@
       gap: 10px;
       flex-shrink: 0;
     }
-    .input-row {
-      display: flex;
-      gap: 8px;
-    }
+    .input-row { display: flex; gap: 8px; }
     input[type="text"] {
       flex: 1;
       padding: 8px 12px;
@@ -43,9 +40,7 @@
       font-size: 13px;
       outline: none;
     }
-    input[type="text"]:focus {
-      border-color: var(--primary);
-    }
+    input[type="text"]:focus { border-color: var(--primary); }
     button.btn-submit {
       padding: 8px 16px;
       background: var(--primary);
@@ -56,10 +51,7 @@
       font-weight: 600;
       cursor: pointer;
     }
-    button.btn-submit:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+    button.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
     .status-bar {
       font-size: 12px;
       color: var(--muted);
@@ -68,9 +60,7 @@
       align-items: center;
       gap: 8px;
     }
-    #statusText {
-      margin-right: auto;
-    }
+    #statusText { margin-right: auto; }
     .viewer-action {
       padding: 6px 10px;
       background: #ffffff;
@@ -84,16 +74,8 @@
       opacity: 0.45;
       cursor: not-allowed;
     }
-    .viewer-container {
-      flex: 1;
-      position: relative;
-      background: #ffffff;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+    .viewer-container { flex: 1; position: relative; background: #ffffff; }
+    iframe { width: 100%; height: 100%; border: none; }
     .loading-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -122,12 +104,12 @@
   <div class="header">
     <div class="input-row">
       <input type="text" id="customInput" placeholder="输入想图解的概念，或网页划词右键..." />
-      <button class="btn-submit" id="btnRun">Lens</button>
+      <button class="btn-submit" id="btnRun">图解</button>
     </div>
     <div class="status-bar">
       <span id="statusText">就绪</span>
-      <button class="viewer-action" id="btnOpenPage" type="button" disabled>Open</button>
-      <button class="viewer-action" id="btnDownload" type="button" disabled>Download</button>
+      <button class="viewer-action" id="btnOpenPage" type="button" disabled>打开网页</button>
+      <button class="viewer-action" id="btnDownload" type="button" disabled>下载</button>
     </div>
   </div>
 
